@@ -109,9 +109,16 @@ do
         server_name $DOMAIN_NAME;
         root $DOMAIN_PATH;
         index index.php;
+
+        location / {
+            # try to serve file directly, fallback to index.php
+            try_files \$uri /index.php\$is_args\$args;
+        }
+
         location ~ /\.ht {
             deny all;
         }
+
         location ~ \.php\$ {
             fastcgi_keep_conn on;
             fastcgi_pass upstream;
@@ -150,6 +157,11 @@ server {
     ssl on;
     ssl_certificate /etc/nginx/conf.d/$DOMAIN_NAME.crt;
     ssl_certificate_key /etc/nginx/conf.d/$DOMAIN_NAME.key;
+
+    location / {
+        # try to serve file directly, fallback to index.php
+        try_files \$uri /index.php\$is_args\$args;
+    }
 
     location ~ /\.ht {
         deny all;
