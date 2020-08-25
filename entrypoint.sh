@@ -132,13 +132,16 @@ END
     elif [ $DOMAIN_TYPE = "static" ]; then
         cat > "$CONF_DIR/$DOMAIN_NAME.conf" <<END
 server {
-    listen 80;
-    server_name $DOMAIN_NAME;
-    root $DOMAIN_PATH;
-    index index.html;
-    add_header Access-Control-Allow-Origin *;
-    location ~ /\.ht {
-        deny all;
+    listen       80;
+    server_name  $DOMAIN_NAME;
+    location / {
+      root   $DOMAIN_PATH;
+      index  index.html;
+      try_files \$uri \$uri/ /index.html;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+      root   /usr/share/nginx/html;
     }
 }
 END
