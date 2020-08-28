@@ -157,7 +157,6 @@ server {
     root $DOMAIN_PATH;
     index index.php;
 
-    ssl on;
     ssl_certificate /etc/nginx/certificate/$DOMAIN_NAME.crt;
     ssl_certificate_key /etc/nginx/certificate/$DOMAIN_NAME.key;
 
@@ -204,7 +203,6 @@ server {
       root   /usr/share/nginx/html;
     }
 
-    #ssl on;
     ssl_certificate /etc/nginx/certificate/$DOMAIN_NAME.crt;
     ssl_certificate_key /etc/nginx/certificate/$DOMAIN_NAME.key;
 
