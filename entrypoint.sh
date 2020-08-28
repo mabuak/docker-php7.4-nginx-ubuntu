@@ -178,8 +178,6 @@ server {
         include fastcgi_params;
     }
 
-    #ssl_stapling on;
-    #ssl_stapling_verify on;
     # config to enable HSTS(HTTP Strict Transport Security) https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
     # to avoid ssl stripping https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping
     # also https://hstspreload.org/
@@ -206,9 +204,6 @@ server {
     ssl_certificate /etc/nginx/certificate/$DOMAIN_NAME.crt;
     ssl_certificate_key /etc/nginx/certificate/$DOMAIN_NAME.key;
 
-    #ssl_stapling on;
-    #ssl_stapling_verify on;
-
     # config to enable HSTS(HTTP Strict Transport Security) https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
     # to avoid ssl stripping https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping
     # also https://hstspreload.org/
@@ -222,7 +217,7 @@ END
     echo "127.1.0.1 $DOMAIN_NAME" >> /etc/hosts
 done
 
-echo "Ready To Start" >&2
+echo "Hello World!" >&2
 
 # Start PHP and NGINX
 php-fpm7.4 -R && nginx -g 'daemon off;'
