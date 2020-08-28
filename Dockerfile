@@ -57,6 +57,7 @@ RUN \
         php-mongodb \
         php-redis \
         php-xdebug \
+        composer \
     # forward logs to docker log collector
     && ln -sf /dev/stdout /var/log/php7.4-fpm.log
 # Config PHP and NGINX
