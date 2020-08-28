@@ -158,8 +158,8 @@ server {
     index index.php;
 
     ssl on;
-    ssl_certificate /etc/nginx/conf.d/$DOMAIN_NAME.crt;
-    ssl_certificate_key /etc/nginx/conf.d/$DOMAIN_NAME.key;
+    ssl_certificate /etc/nginx/certificate/$DOMAIN_NAME.crt;
+    ssl_certificate_key /etc/nginx/certificate/$DOMAIN_NAME.key;
 
     location / {
         # try to serve file directly, fallback to index.php
@@ -205,8 +205,8 @@ server {
     }
 
     #ssl on;
-    ssl_certificate /etc/nginx/conf.d/$DOMAIN_NAME.crt;
-    ssl_certificate_key /etc/nginx/conf.d/$DOMAIN_NAME.key;
+    ssl_certificate /etc/nginx/certificate/$DOMAIN_NAME.crt;
+    ssl_certificate_key /etc/nginx/certificate/$DOMAIN_NAME.key;
 
     #ssl_stapling on;
     #ssl_stapling_verify on;
